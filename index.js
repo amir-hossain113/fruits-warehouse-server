@@ -33,7 +33,11 @@ async function run(){
             res.send(product);
         });
 
-
+        app.post('/inventory', async(req, res) => {
+            const product = req.body;
+            const result = await inventoryCollection.insertOne(product);
+            res.send(result);
+        })
 
         //Delete
         app.delete('/inventory/:id', async(req, res) => {
